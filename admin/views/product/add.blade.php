@@ -6,6 +6,8 @@
 
 
 @section('content')
-Admin
+
+   @breadCrumb(array('w'=>v))
+   @include('common.breadCrumb',array('首页'=>'/'));
 
 @stop
