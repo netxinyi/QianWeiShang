@@ -26,7 +26,7 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(array(
 
-	'local' => array('homestead'),
+	'local' => array('vision-ThinkPad'),
 
 ));
 
@@ -40,8 +40,14 @@ $env = $app->detectEnvironment(array(
 | may do so within the paths.php file and they will be bound here.
 |
 */
+if(array_key_exists('APP_DOMAIN_ADMIN',$_SERVER) && $_SERVER['APP_DOMAIN_ADMIN'] == 'Admin'){
+    $app->bindInstallPaths(require __DIR__.'/adminpaths.php');
+}else{
+    $app->bindInstallPaths(require __DIR__.'/paths.php');
+}
 
-$app->bindInstallPaths(require __DIR__.'/paths.php');
+
+
 
 /*
 |--------------------------------------------------------------------------
