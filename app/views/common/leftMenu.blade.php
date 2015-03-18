@@ -7,7 +7,9 @@
                     </div>
                     <ul class="nav nav-pills nav-stacked main-menu">
                         <li class="nav-header">Main</li>
-                        <li><a class="ajax-link" href="index.php"><i class="glyphicon glyphicon-home"></i><span> 首页</span></a>
+                        <li><a class="ajax-link" href="/"><span> 首页</span></a>
+                        </li>
+                        <li><a class="ajax-link" href="/add"><span> 添加</span></a>
                         </li>
 
                     </ul>
