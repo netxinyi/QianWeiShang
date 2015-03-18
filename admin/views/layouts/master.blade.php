@@ -10,8 +10,7 @@
     <meta name="author" content="迁迁">
     @yield('meta_header')
     <!-- The fav icon -->
-    <link rel="shortcut icon" href="img/favicon.ico">
-
+    <link rel="shortcut icon" href="/img/favicon.ico">
     <!-- The styles -->
     @yield('css')
     @yield('js_header')

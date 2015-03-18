@@ -6,6 +6,6 @@
 
 
 @section('content')
-Q
+Admin
 
 @stop

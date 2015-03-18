@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{URL::route('showIndex')}}"> <img alt="鹦鹉吧 Logo" src="img/logo20.png" class="hidden-xs"/>
+            <a class="navbar-brand" href="{{URL::route('showIndex')}}"> <img alt="鹦鹉吧 Logo" src="/img/logo20.png" class="hidden-xs"/>
                 <span>鹦鹉吧</span></a>
 
             <!-- user dropdown starts -->
