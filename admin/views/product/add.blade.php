@@ -21,6 +21,7 @@
                         <a href="#" class="btn btn-close btn-round btn-default"><i
                                     class="glyphicon glyphicon-remove"></i></a>
                     </div>
+
                 </div>
                 <div class="box-content ">
                     <ul class="nav nav-tabs" id="addProductTab">
