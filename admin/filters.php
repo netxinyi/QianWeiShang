@@ -89,7 +89,6 @@ Route::filter('csrf', function()
 
 Blade::extend(function($view, $compiler)
 {
-    $pattern = $compiler->createMatcher('breadCrumb');
-    dd($view);
+    //$pattern = $compiler->createMatcher('breadCrumb');
     return preg_replace('/(?<!\w)(\s*)@breadCrumb\s*\((.*)\)/', '$1<?php echo $__env->make("common.breadCrumb",array("breadCrumb"=>$2), array_except(get_defined_vars(), array("__data", "__path")))->render(); ?>', $view);
 });
