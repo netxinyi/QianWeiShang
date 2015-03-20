@@ -24,14 +24,15 @@
 
                 </div>
                 <div class="box-content ">
-                    <ul class="nav nav-tabs" id="addProductTab">
-                        <li class="active"><a href="#product-baseInfo">基本信息</a></li>
-                        <li><a href="#product-gallery">相册</a></li>
-                        <li><a href="#product-description">描述</a></li>
 
-                    </ul>
-                    <div id="addProductTabContent" class="tab-content">
-                        <div class="tab-pane active" id="product-baseInfo">
+                     <ul class="nav nav-tabs" id="myTab">
+                            <li class="active"><a href="#product-baseinfo">基本信息</a></li>
+                            <li><a href="#product-description">描述</a></li>
+                            <li><a href="#product-gallery">相册</a></li>
+                     </ul>
+                      <br>
+                    <div id="myTabContent" class="tab-content">
+                        <div class="tab-pane active" id="product-baseinfo">
                             <form class="" role="form">
                                 <div class="form-group input-group col-md-8">
                                     <span class="input-group-addon">标题：</span>
@@ -100,10 +101,10 @@
                             </form>
 
                         </div>
-                        <div class="tab-pane" id="product-gallery">
+                        <div class="tab-pane" id="product-description">
                             ss
                         </div>
-                        <div class="tab-pane" id="product-description">dd</div>
+                        <div class="tab-pane" id="product-gallery">dd</div>
 
                     </div>
 
@@ -114,4 +115,5 @@
         <!--/span-->
 
     </div>
+
 @stop
