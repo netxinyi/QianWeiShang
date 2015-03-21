@@ -49,7 +49,7 @@ return array(
 		'sqlite' => array(
 			'driver'   => 'sqlite',
 			'database' => __DIR__.'/../database/production.sqlite',
-			'prefix'   => '',
+			'prefix'   => 'l4_',
 		),
 
 		'mysql' => array(
@@ -57,17 +57,18 @@ return array(
 			'host'      => 'localhost',
 			'database'  => 'yingwuba',
 			'username'  => 'root',
-			'password'  => '',
+			'password'  => '123456',
 			'charset'   => 'utf8',
-			'collation' => 'utf8_unicode_ci',
+			// 'collation' => 'utf8_unicode_ci',
+			'collation' => 'utf8_general_ci',
 			'prefix'    => '',
 		),
 
 		'pgsql' => array(
 			'driver'   => 'pgsql',
 			'host'     => 'localhost',
-			'database' => 'forge',
-			'username' => 'forge',
+			'database' => 'database',
+			'username' => 'root',
 			'password' => '',
 			'charset'  => 'utf8',
 			'prefix'   => '',
