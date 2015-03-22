@@ -1,4 +1,4 @@
-@include('layouts.static')
+@include('admin.layouts.static')
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -10,8 +10,7 @@
     <meta name="author" content="迁迁">
     @yield('meta_header')
     <!-- The fav icon -->
-    <link rel="shortcut icon" href="img/favicon.ico">
-
+    <link rel="shortcut icon" href="/img/favicon.ico">
     <!-- The styles -->
     @yield('css')
     @yield('js_header')
@@ -20,12 +19,12 @@
 
 <body>
     @section('header')
-        @include('common.header')
+        @include('admin.common.header')
     @show
     <div class="ch-container">
         <div class="row">
             @section('leftMenu')
-               @include('common.leftMenu')
+               @include('admin.common.leftMenu')
             @show
             <noscript>
                         <div class="alert alert-block col-md-12">
@@ -41,7 +40,7 @@
             </div>
         </div>
         @section('footer')
-            @include('common.footer')
+            @include('admin.common.footer')
         @show
     </div>
 @yield('js_footer')

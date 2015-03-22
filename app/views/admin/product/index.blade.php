@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('admin.layouts.master')
 
 @section('title')
     首页
@@ -6,6 +6,6 @@
 
 
 @section('content')
-Front
+Admin
 
 @stop
