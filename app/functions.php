@@ -275,3 +275,10 @@ if (! function_exists('order_by')) {
         return $a;
     }
 }
+
+if (! function_exists('bootstrp_select')) {
+        function bootstrp_select(){
+
+        }
+
+}

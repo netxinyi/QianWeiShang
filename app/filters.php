@@ -105,3 +105,8 @@ Event::listen('auth.login', function ($user, $remember) {
 // Event::listen('auth.logout', function ($user) {
 //     // 
 // });
+
+Blade::extend(function($view)
+{
+    return preg_replace('/(?<!\w)(\s*)@breadCrumb\s*\((.*)\)/', '$1<?php echo $__env->make("admin.common.breadCrumb",array("breadCrumb"=>$2), array_except(get_defined_vars(), array("__data", "__path")))->render(); ?>', $view);
+});

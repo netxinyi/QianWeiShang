@@ -40,6 +40,10 @@ class CreateProductTable extends Migration {
             $table->string('implicitGene',255);
             $table->text('description');
             $table->index('sold');
+
+            $table->timestamps();
+            $table->softDeletes();
+            $table->comment = '鹦鹉';
             $table->engine = 'InnoDB';
         });
     }

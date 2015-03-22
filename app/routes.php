@@ -41,6 +41,18 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth|admin'), function () {
         $route->get('/')->as('admin')->uses('getIndex');
     });
 
+    # 产品管理
+    RouteGroup::make('product')->as('product')->controller('Admin_ProductResource')->go(function ($route) {
+        $route->index( )
+            ->create()
+            ->store( )
+            ->edit(  )
+            ->update();
+        $route->delete('{id}')->as('destroy')->uses('destroy');
+    });
+
+
+
     # 用户管理
     RouteGroup::make('users')->as('users')->controller('Admin_UserResource')->go(function ($route) {
         $route->index( )
