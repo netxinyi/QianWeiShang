@@ -276,9 +276,30 @@ if (! function_exists('order_by')) {
     }
 }
 
-if (! function_exists('bootstrp_select')) {
-        function bootstrp_select(){
+if(! function_exists('date_to_age')){
+    function date_to_age($diff,$befor = '', $after = ''){
+        $str = '';
+        if($diff <= 60){
+            $str = $diff.'秒';
+        }elseif($diff > 60 && $diff <= 3600){
+            $str = floor($diff / 60).'分钟';
+        }elseif($diff > 3600 && $diff <= 86400){
 
+            $str = floor($diff / 3600).'小时';
+
+        }elseif($diff > 86400 && $diff <= 2592000){
+            $days = floor($diff / 86400);
+            $str = $days.'天';
+
+        }elseif($diff > 2592000 && $diff <= 31536000){
+            $months = floor($diff / 2592000);
+            $diff = $diff % 2592000;
+            $str = $months.'个月'.date_to_age($diff);
+        }elseif($diff > 31536000){
+            $years = floor($diff / 31536000) ;
+            $diff = $diff % 31536000 ;
+            $str = $years.'年'.date_to_age($diff);
         }
-
+        return $befor.$str.$after;
+    }
 }

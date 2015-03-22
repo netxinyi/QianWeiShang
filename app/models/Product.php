@@ -18,5 +18,13 @@ class Product extends BaseModel
     protected $table = 'product';
 
 
+    public function varietie()
+    {
+        return $this->belongsTo('Varieties', 'varietieId');
+    }
+
+    public function date_to_age(){
+        return date_to_age(time()-strtotime($this->birthday));
+    }
 
 }

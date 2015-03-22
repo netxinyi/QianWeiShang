@@ -26,15 +26,33 @@ class CreateProductTable extends Migration {
      */
     public function up()
     {
+
+        //创建品种表
+        Schema::create('varieties', function ($table) {
+            $table->increments('id');
+            $table->string('name'    ,50      )->comment('品种名');
+            $table->string('features',255     )->comment('品种特征');
+            $table->timestamps();
+            $table->softDeletes();
+
+            $table->comment = '品种表';
+            $table->engine  = 'MyISAM';
+            $table->unique('name');
+        });
+        //填充默认品种
+        $this->seedVarieties();
+
+
+        //创建鹦鹉表
         Schema::create('product', function($table){
             $table->increments('id');
             $table->string('code', 20)->unique();
             $table->string('title', 255);
             $table->decimal('price', 10,2)->unsigned();
             $table->boolean('sold');
-            $table->string('varietie', 20);
-            $table->string('faVarietie', 20);
-            $table->string('maVarietie', 20);
+            $table->tinyInteger('varietieId');
+            $table->tinyInteger('faVarietie');
+            $table->tinyInteger('maVarietie');
             $table->date('birthday');
             $table->string('dominantGene',255);
             $table->string('implicitGene',255);
@@ -43,7 +61,31 @@ class CreateProductTable extends Migration {
 
             $table->timestamps();
             $table->softDeletes();
+//
+//            $table->foreign('varietie')
+//                ->foreign('faVarietie')
+//                ->foreign('maVarietie')
+//                ->references('id')->on('varieties')
+//                ->onDelete('cascade');
             $table->comment = '鹦鹉';
+            $table->engine = 'InnoDB';
+        });
+
+
+        //创建鹦鹉相册表
+        Schema::create('gallery', function($table){
+            $table->increments('id');
+            $table->integer('productId');
+            $table->string('title', 100);
+            $table->string('path', 255);
+            $table->string('description');
+            $table->timestamps();
+
+            $table->index('productId');
+
+//            $table->foreign('productId')
+//                ->references('id')->on('products')
+//                ->onDelete('cascade');
             $table->engine = 'InnoDB';
         });
     }
@@ -55,7 +97,16 @@ class CreateProductTable extends Migration {
      */
     public function down()
     {
+        Schema::dropIfExists('varieties');
         Schema::dropIfExists('product');
+        Schema::dropIfExists('gallery');
     }
 
+
+    public function seedVarieties(){
+        Varieties::create(array(
+            'name'  =>  '灰翅',
+            'features' =>'灰翅的特征'
+        ));
+    }
 }

@@ -45,10 +45,15 @@ class Admin_ProductResource extends BaseResource
         'code.unique'       => '此编码已被使用。',
         'code.between'      => '编码长度在:min和:max之间',
         'code.alpha_num'    => '编码只允许字母和数字',
-        'varietie.required' => '请选择鹦鹉品种。',
-        'varietie.min'      => '请选择鹦鹉品种。',
+        'varietieId.required' => '请选择鹦鹉品种。',
+        'varietieId.min'      => '请选择鹦鹉品种。',
     );
 
+
+    public function create(){
+        $varieties = array_merge(['请选择'], Varieties::lists('name', 'id'));
+        return View::make($this->resourceView . '.create')->with(compact('varieties'));
+    }
     /**
      * 资源列表页面
      * GET         /resource
@@ -56,8 +61,23 @@ class Admin_ProductResource extends BaseResource
      */
     public function index()
     {
+        // 获取排序条件
+        $orderBy    =   Input::get('orderBy',   'created_at');
+        $sort       =   Input::get('sort'   ,   'desc');
 
-        return View::make($this->resourceView . '.index');
+        // 获取搜索条件
+        switch (Input::get('target')) {
+            case 'title':
+                $title = Input::get('like');
+                break;
+        }
+        // 构造查询语句
+        $query = $this->model->orderBy($orderBy, $sort);
+        isset($title) AND $query->where('title', 'like', "%{$title}%");
+
+        $datas = $query->paginate(1);
+        $varieties = array_merge(['请选择'], Varieties::lists('name', 'id'));
+        return View::make($this->resourceView.'.index')->with(compact('datas','varieties'));
     }
 
     /**
@@ -74,8 +94,9 @@ class Admin_ProductResource extends BaseResource
         $rules  = array(
             'title'    => 'required|between:5,30|' . $unique,
             'code'     => 'required|alpha_dash|between:3,10|' . $unique,
-            'varietie' => 'required|min:1',
-            'price'    => 'required|numeric'
+            'varietieId' => 'required|min:1',
+            'price'    => 'required|numeric',
+            'birthday'  =>  'required|date_format:Y-m-d'
         );
         // 自定义验证消息
         // 开始验证
@@ -87,7 +108,7 @@ class Admin_ProductResource extends BaseResource
             $model->title = Input::get('title');
             $model->code  = Input::get('code');
             $model->price    = floatval(Input::get('price'));
-            $model->varietie = intval(Input::get('varietie'));
+            $model->varietieId = intval(Input::get('varietieId'));
             $model->birthday = Input::get('birthday');
             $model->faVarietie = Input::get('faVarietie');
             $model->maVarietie = Input::get('maVarietie');

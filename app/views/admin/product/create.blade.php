@@ -52,8 +52,8 @@
 
                                 </div>
                                 <div class="form-group input-group">
-                                    {{ Form::label('varietie', '品种', ['class'=>'input-group-addon']) }}
-                                    {{ Form::select('varietie', ['请选择'], 1, ['class' => 'form-control']) }}
+                                    {{ Form::label('varietieId', '品种', ['class'=>'input-group-addon']) }}
+                                    {{ Form::select('varietieId',  $varieties,  Form::old('varietie',0), ['class' => 'form-control']) }}
                                 </div>
                                 <div class="form-group  input-group">
                                     {{ Form::label('birthday', '出生日期', ['class'=>'input-group-addon']) }}
@@ -63,11 +63,11 @@
 
                                 <div class="form-group input-group">
                                     {{ Form::label('faVarietie', '父系品种', ['class'=>'input-group-addon']) }}
-                                    {{ Form::select('faVarietie', ['请选择'], 1, ['class' => 'form-control']) }}
+                                    {{ Form::select('faVarietie', $varieties,  Form::old('faVarietie',0), ['class' => 'form-control']) }}
                                 </div>
                                 <div class="form-group input-group">
                                     {{ Form::label('maVarietie', '母系品种', ['class'=>'input-group-addon']) }}
-                                    {{ Form::select('maVarietie', ['请选择'], 1, ['class' => 'form-control']) }}
+                                    {{ Form::select('maVarietie', $varieties, Form::old('maVarietie',0), ['class' => 'form-control']) }}
                                 </div>
                                 <div class="form-group input-group">
                                     {{ Form::label('dominantGene', '显性基因', ['class'=>'input-group-addon']) }}
