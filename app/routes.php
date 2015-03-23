@@ -48,7 +48,9 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth|admin'), function () {
               ->store( )
               ->edit(  )
               ->update();
-        $route->get('gallery')->as('gallery');
+        $route->get('gallery')->as('gallery')->uses('galleryIndex');
+
+
         $route->delete('{id}')->as('destroy')->uses('destroy');
     });
 

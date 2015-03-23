@@ -18,8 +18,8 @@
                     <h2>品种列表</h2>
 
                     <div class="box-icon">
-                        <a href="#" class="btn btn-setting btn-round btn-default"><i
-                                    class="glyphicon glyphicon-cog"></i></a>
+                        <a href="{{route('varietie.create')}}" class="btn btn-round btn-default"><i
+                                    class="glyphicon glyphicon-plus"></i></a>
                         <a href="#" class="btn btn-minimize btn-round btn-default"><i
                                     class="glyphicon glyphicon-chevron-up"></i></a>
                         <a href="#" class="btn btn-close btn-round btn-default"><i

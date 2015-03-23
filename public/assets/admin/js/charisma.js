@@ -151,6 +151,32 @@ function docReady() {
         $(this).tab('show');
     });
 
+    //自定义HTTP请求方式
+    $('[data-method]').click(function(){
+
+        var method = $(this).data('method');
+        var url    = $(this).data('url');
+        var beforFun = $(this).data('befor');
+        var afterFun = $(this).data('after');
+        var success  = $(this).data('success');
+        var isSurce = eval(beforFun);
+
+        if(isSurce == true){
+            $.ajax({
+                url:url,
+                type:method,
+                success:function(result){
+                    if(typeof success == 'function'){
+                        success(result);
+                    }
+                }
+            });
+            if(typeof afterFun == 'function'){
+                afterFun($(this),method);
+            }
+        }
+
+    });
 
     //tooltip
     $('[data-toggle="tooltip"]').tooltip();

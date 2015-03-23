@@ -190,6 +190,7 @@ class BaseResource extends BaseController
     public function destroy($id)
     {
         $data = $this->model->find($id);
+        dd($data);
         if (is_null($data))
             return Redirect::back()->with('error', '没有找到对应的'.$this->resourceName.'。');
         elseif ($data->delete())

@@ -20,7 +20,7 @@ class Product extends BaseModel
 
     public function varietie()
     {
-        return $this->belongsTo('Varieties', 'varietieId');
+        return $this->belongsTo('Varietie', 'varietieId');
     }
 
     public function date_to_age($strTime){
