@@ -49,7 +49,6 @@ class CreateProductTable extends Migration {
             $table->string('code', 20)->unique();
             $table->string('title', 255);
             $table->decimal('price', 10,2)->unsigned();
-            $table->boolean('sold');
             $table->tinyInteger('varietieId');
             $table->tinyInteger('faVarietie');
             $table->tinyInteger('maVarietie');
@@ -57,7 +56,7 @@ class CreateProductTable extends Migration {
             $table->string('dominantGene',255);
             $table->string('implicitGene',255);
             $table->text('description');
-            $table->index('sold');
+
 
             $table->timestamps();
             $table->softDeletes();

@@ -128,7 +128,6 @@ class Admin_ProductResource extends BaseResource
             $model->dominantGene = Input::get('dominantGene');
             $model->implicitGene = Input::get('implicitGene');
             $model->description  = Input::get('description', '');
-            $model->sold         = false;
             $model->created_at   = new Carbon;
 
             if ($model->save()) {
