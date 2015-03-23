@@ -23,8 +23,20 @@ class Product extends BaseModel
         return $this->belongsTo('Varieties', 'varietieId');
     }
 
-    public function date_to_age(){
-        return date_to_age(time()-strtotime($this->birthday));
+    public function date_to_age($strTime){
+        return date_to_age(time()-strtotime($strTime));
     }
 
+    public function age_to_date($ageY,$ageM,$ageD, $format = 'Y-m-d'){
+        $diff = (intval($ageY) * 31536000 ) + (intval($ageM) * 2592000) + (intval($ageD) * 86400);
+        if( $diff <= 0){
+            return false;
+        }
+
+        $timestamp = time()-$diff;
+        if(!is_null($format)){
+            return date($format,$timestamp);
+        }
+        return $timestamp;
+    }
 }

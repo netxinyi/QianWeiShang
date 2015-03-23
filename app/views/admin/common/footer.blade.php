@@ -20,9 +20,8 @@
     </div>
 
     <footer class="row">
-        <p class="col-md-9 col-sm-9 col-xs-12 copyright">&copy; <a href="http://usman.it" target="_blank">Muhammad
-                Usman</a> 2012 - <?php echo date('Y') ?></p>
+        <p class="col-md-9 col-sm-9 col-xs-12 copyright">Copyright &copy; 2012 - 2015 <a href="http://www.linjianxiaoxi.com" target="_blank">林间小溪鹦鹉养殖场</a></p>
 
         <p class="col-md-3 col-sm-3 col-xs-12 powered-by">Powered by: <a
-                href="http://usman.it/free-responsive-admin-template">Charisma</a></p>
+                href="http://www.netxinyi.com">新依网络</a></p>
     </footer>

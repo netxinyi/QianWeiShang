@@ -28,7 +28,7 @@ class CreateProductTable extends Migration {
     {
 
         //创建品种表
-        Schema::create('varieties', function ($table) {
+        Schema::create('varietie', function ($table) {
             $table->increments('id');
             $table->string('name'    ,50      )->comment('品种名');
             $table->string('features',255     )->comment('品种特征');
@@ -104,7 +104,7 @@ class CreateProductTable extends Migration {
 
 
     public function seedVarieties(){
-        Varieties::create(array(
+        Varietie::create(array(
             'name'  =>  '灰翅',
             'features' =>'灰翅的特征'
         ));

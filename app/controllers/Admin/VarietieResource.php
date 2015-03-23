@@ -1,36 +1,36 @@
 <?php
 
-class Admin_ProductResource extends BaseResource
+class Admin_VarietieResource extends BaseResource
 {
     /**
      * 资源视图目录
      * @var string
      */
-    protected $resourceView = 'admin.product';
+    protected $resourceView = 'admin.varietie';
 
     /**
      * 资源模型名称，初始化后转为模型实例
      * @var string|Illuminate\Database\Eloquent\Model
      */
-    protected $model = 'Product';
+    protected $model = 'Varietie';
 
     /**
      * 资源标识
      * @var string
      */
-    protected $resource = 'product';
+    protected $resource = 'varietie';
 
     /**
      * 资源数据库表
      * @var string
      */
-    protected $resourceTable = 'product';
+    protected $resourceTable = 'varietie';
 
     /**
      * 资源名称（中文）
      * @var string
      */
-    protected $resourceName = '产品';
+    protected $resourceName = '品种';
 
     /**
      * 自定义验证消息
@@ -68,24 +68,13 @@ class Admin_ProductResource extends BaseResource
 
         $sort         = Input::get('sort_asc') ? 'asc' : 'desc';
         $title        = Input::get('keyword') ? Input::get('keyword') : NULL;
-        $varietieId   = Input::get('varietieId') ? Input::get('varietieId') : NULL;
-        $priceFrom    = Input::get('priceFrom') ? Input::get('priceFrom') : NULL;
-        $priceTo      = Input::get('priceTo') ? Input::get('priceTo') : NULL;
 
-
-        $birthday = $this->model->age_to_date(Input::get('ageY',0),Input::get('ageM',0),Input::get('ageD',0));
 
 
         // 获取搜索条件
         // 构造查询语句
         $query = $this->model->orderBy($orderBy, $sort);
-
-        //TODO 目前只支持匹配标题，需要加上匹配编号的功能
-        isset($varietieId   )    AND $query->where('varietieId',        $varietieId     );
         isset($title        )    AND $query->where('title',     'like', "%{$title}%"    );
-        isset($priceFrom    )    AND $query->where('price',     '>=',    $priceFrom      );
-        isset($priceTo      )    AND $query->where('price',     '<=',    $priceTo        );
-        if($birthday        )        $query->where('birthday',  '>=',    $birthday       );
 
 
         $datas     = $query->paginate(10);

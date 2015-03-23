@@ -17,7 +17,13 @@
                                 <li><a href="/product/gallery">相册管理</a></li>
                             </ul>
                         </li>
-
+                        <li class="accordion">
+                            <a href="#"><i class="glyphicon glyphicon-plus"></i><span>品种管理</span></a>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="{{route('varietie.index')}}">品种列表</a></li>
+                                <li><a href="{{route('varietie.create')}}">添加品种</a></li>
+                            </ul>
+                        </li>
                     </ul>
                     <label id="for-is-ajax" for="is-ajax"><input id="is-ajax" type="checkbox"> Ajax on menu</label>
                 </div>

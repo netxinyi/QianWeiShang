@@ -3,7 +3,7 @@
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class Varieties extends BaseModel
+class Varietie extends BaseModel
 {
     /**
      * 软删除
@@ -15,7 +15,7 @@ class Varieties extends BaseModel
      * 数据库表名称（不包含前缀）
      * @var string
      */
-    protected $table = 'varieties';
+    protected $table = 'varietie';
 
 
 

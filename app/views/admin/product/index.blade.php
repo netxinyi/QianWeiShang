@@ -29,14 +29,14 @@
                     <form role="form">
                         <div class="form-group has-feedback ">
                             {{Form::label('keyword','关键词：')}}
-                            {{Form::text('keyword',Form::old('keyword'),['class'=>'form-control','placeholder'=>'输入标题或编码搜索'])}}
+                            {{Form::text('keyword',Input::get('keyword'),['class'=>'form-control','placeholder'=>'输入标题或编码搜索'])}}
 
                             <i class="glyphicon glyphicon-search form-control-feedback" id="keywordSearchButton"></i>
 
                         </div>
                         <div class="form-group">
                             {{ Form::label('varietieId', '品种：') }}
-                            {{ Form::select('varietieId',  $varieties,  Form::old('varietie',0), ['class' => 'form-control']) }}
+                            {{ Form::select('varietieId',  $varieties,  Input::get('varietieId',0), ['class' => 'form-control']) }}
                         </div>
                         <div class="">
                             {{Form::label('priceLt','价格：')}}
@@ -44,11 +44,11 @@
                         <div class="input-group form-group">
 
                             {{ Form::label('priceLt', '从', ['class'=>'input-group-addon']) }}
-                            {{Form::text('priceLt',Form::old('priceLt'),['class'=>'form-control'])}}
+                            {{Form::text('priceLt',Input::get('priceLt'),['class'=>'form-control'])}}
 
                             {{ Form::label('priceGt', '到', ['class'=>'input-group-addon']) }}
 
-                            {{Form::text('priceGt',Form::old('priceGt'),['class'=>'form-control'])}}
+                            {{Form::text('priceGt',Input::get('priceGt'),['class'=>'form-control'])}}
 
                         </div>
                         <div class="">
@@ -56,12 +56,19 @@
                         </div>
                         <div class="input-group form-group">
 
-                            {{ Form::label('ageLt', '从', ['class'=>'input-group-addon']) }}
-                            {{Form::text('ageLt',Form::old('ageLt'),['class'=>'form-control'])}}
 
-                            {{ Form::label('ageGt', '到', ['class'=>'input-group-addon']) }}
 
-                            {{Form::text('ageGt',Form::old('ageGt'),['class'=>'form-control'])}}
+                            {{Form::selectRange('ageY',0,10,Input::get('ageY',0),['class'=>'form-control'])}}
+                            {{ Form::label('ageY', '年', ['class'=>'input-group-addon']) }}
+
+
+                            {{Form::selectRange('ageM',0,12,Input::get('ageM',0),['class'=>'form-control'])}}
+                            {{ Form::label('ageM', '月', ['class'=>'input-group-addon']) }}
+
+
+
+                            {{Form::selectRange('ageD',0,31,Input::get('ageD',0),['class'=>'form-control'])}}
+                            {{ Form::label('ageD', '天', ['class'=>'input-group-addon']) }}
 
                         </div>
 
@@ -92,9 +99,9 @@
                             <th>序号</th>
                             <th>编号</th>
                             <th>标题{{ order_by('title') }}</th>
-                            <th>价格</th>
-                            <th>品种</th>
-                            <th>年龄</th>
+                            <th>价格{{ order_by('price') }}</th>
+                            <th>品种{{ order_by('varietieId')}}</th>
+                            <th>年龄{{ order_by('birthday') }}</th>
                             <th>操作</th>
                         </tr>
                         </thead>
@@ -107,7 +114,7 @@
                                 <td class="center">{{$product->title}}</td>
                                 <td class="center">{{$product->price}}</td>
                                 <td class="center">{{$product->varietie->name}}</td>
-                                <td class="center">{{$product->date_to_age()}}</td>
+                                <td class="center">{{$product->date_to_age($product->birthday)}}</td>
 
                                 <td class="center">
                                     <span class="label-success label label-default">Active</span>
