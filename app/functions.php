@@ -250,28 +250,31 @@ if (! function_exists('order_by')) {
      */
     function order_by($columnName = '', $default = null)
     {
-        $sortColumnName = Input::get('sort_up', Input::get('sort_down', false));
-        if (Input::get('sort_up')) {
-            $except = 'sort_up'; $orderType = 'sort_down';
+        $sortColumnName = Input::get('sort_asc', Input::get('sort_desc', false));
+        if (Input::get('sort_asc')) {
+            $except = 'sort_asc'; $orderType = 'sort_desc';
         } else {
-            $except = 'sort_down' ; $orderType = 'sort_up';
+            $except = 'sort_desc' ; $orderType = 'sort_asc';
         }
+
+
         if ($sortColumnName == $columnName) {
             $parameters = array_merge(Input::except($except), array($orderType => $columnName));
-            $icon       = Input::get('sort_up') ? 'chevron-up' : 'chevron-down' ;
+            $icon       = Input::get('sort_asc') ? 'chevron-up' : 'chevron-down' ;
         } elseif ($sortColumnName === false && $default == 'asc') {
-            $parameters = array_merge(Input::all(), array('sort_down' => $columnName));
+            $parameters = array_merge(Input::all(), array('sort_desc' => $columnName));
             $icon       = 'chevron-up';
         } elseif ($sortColumnName === false && $default == 'desc') {
-            $parameters = array_merge(Input::all(), array('sort_up' => $columnName));
+            $parameters = array_merge(Input::all(), array('sort_asc' => $columnName));
             $icon       = 'chevron-down';
         } else {
-            $parameters = array_merge(Input::except($except), array('sort_up' => $columnName));
+            $parameters = array_merge(Input::except($except), array('sort_asc' => $columnName));
             $icon       = 'random';
         }
+
         $a  = '<a href="';
         $a .= action(Route::current()->getActionName(), $parameters);
-        $a .= '" class="glyphicon glyphicon-'.$icon.'"></a>';
+        $a .= '"><i class="glyphicon glyphicon-'.$icon.'" style="font-size:8px;color:#888888"></i></a>';
         return $a;
     }
 }

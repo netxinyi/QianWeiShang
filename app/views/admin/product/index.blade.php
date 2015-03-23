@@ -31,7 +31,7 @@
                             {{Form::label('keyword','关键词：')}}
                             {{Form::text('keyword',Form::old('keyword'),['class'=>'form-control','placeholder'=>'输入标题或编码搜索'])}}
 
-                            <i class="glyphicon glyphicon-search form-control-feedback"></i>
+                            <i class="glyphicon glyphicon-search form-control-feedback" id="keywordSearchButton"></i>
 
                         </div>
                         <div class="form-group">
@@ -65,7 +65,7 @@
 
                         </div>
 
-                        <button type="submit" class="btn btn-default btn-block">搜索</button>
+                        <button type="submit" class="btn btn-default btn-block btn-primary">搜索</button>
                     </form>
                 </div>
             </div>
@@ -90,7 +90,8 @@
                         <thead>
                         <tr>
                             <th>序号</th>
-                            <th>标题</th>
+                            <th>编号</th>
+                            <th>标题{{ order_by('title') }}</th>
                             <th>价格</th>
                             <th>品种</th>
                             <th>年龄</th>
@@ -102,6 +103,7 @@
 
                             <tr>
                                 <td>{{$key + 1}}</td>
+                                <td class="center">{{$product->code}}</td>
                                 <td class="center">{{$product->title}}</td>
                                 <td class="center">{{$product->price}}</td>
                                 <td class="center">{{$product->varietie->name}}</td>

@@ -62,8 +62,9 @@ class Admin_ProductResource extends BaseResource
     public function index()
     {
         // 获取排序条件
-        $orderBy    =   Input::get('orderBy',   'created_at');
-        $sort       =   Input::get('sort'   ,   'desc');
+        $orderBy = Input::get('sort_asc', Input::get('sort_desc', 'created_at'));
+        $sort   = Input::get('sort_asc') ? 'asc' : 'desc' ;
+
 
         // 获取搜索条件
         switch (Input::get('target')) {
