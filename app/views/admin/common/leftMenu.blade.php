@@ -25,7 +25,6 @@
                             </ul>
                         </li>
                     </ul>
-                    <label id="for-is-ajax" for="is-ajax"><input id="is-ajax" type="checkbox"> Ajax on menu</label>
                 </div>
             </div>
         </div>
