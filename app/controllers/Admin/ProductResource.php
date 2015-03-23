@@ -129,7 +129,6 @@ class Admin_ProductResource extends BaseResource
             $model->implicitGene = Input::get('implicitGene');
             $model->description  = Input::get('description', '');
             $model->created_at   = new Carbon;
-
             if ($model->save()) {
                 // 添加成功
                 return Redirect::back()
