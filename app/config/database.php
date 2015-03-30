@@ -46,16 +46,11 @@ return array(
 
 	'connections' => array(
 
-		'sqlite' => array(
-			'driver'   => 'sqlite',
-			'database' => __DIR__.'/../database/production.sqlite',
-			'prefix'   => 'l4_',
-		),
 
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'yingwuba',
+			'database'  => 'linjianxiaoxi',
 			'username'  => 'root',
 			'password'  => '123456',
 			'charset'   => 'utf8',
